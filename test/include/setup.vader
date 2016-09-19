@@ -1,0 +1,8 @@
+Execute (Clean up test environment):
+  let project_root = system("echo -en $(git rev-parse --show-toplevel || echo '.')")
+  exec "source " . project_root . "/plugin/parengage.vim"
+  call Parengage()
+
+Before:
+After:
+Given:

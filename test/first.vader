@@ -1,0 +1,11 @@
+" First test file for parengage, let's start by writing scenarios of when we
+" do and don't want to insert parens/{}/[]/"" etc...
+
+Include: include/setup.vader
+
+Do(Insert a paren):
+  i(
+
+----------------
+Expect(A pair of parens):
+  ()
