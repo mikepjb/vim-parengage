@@ -9,3 +9,11 @@ Do(Insert a paren):
 ----------------
 Expect(A pair of parens):
   ()
+
+" C-j/i<CR> paredit-newline
+" C-d/x paredit-forward-delete (L336)
+" D paredit-kill (originally C-k)
+" M-d/dw paredit-forward-kill-word
+" (emacs)C-M-f paredit-forward, move forward one sexp - what would be a good vim keybinding? (L379)
+
+" paredit-forward-slurp-sexp (emacs)C-) - my vim traditional is C-k
