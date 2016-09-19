@@ -6,11 +6,14 @@ Include: include/setup.vader
 Do(Insert a paren):
   i(
 
-----------------
+----
+# )
+
 Expect(A pair of parens):
   ()
 
-" C-j/i<CR> paredit-newline
+" Close a paren
+" C-j/i<CR> paredit-newline - instead use <C-f><CR>
 " C-d/x paredit-forward-delete (L336)
 " D paredit-kill (originally C-k)
 " M-d/dw paredit-forward-kill-word
