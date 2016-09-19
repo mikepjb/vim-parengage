@@ -1,5 +1,12 @@
 " Parengage
 
+" TODO uncomment when finished...
+" if &cp || exists( 'g:parengage_loaded' )
+"     finish
+" endif
+"
+" let g:parengage_loaded = 1
+
 " Setup function
 
 function! Parengage()
@@ -7,6 +14,7 @@ function! Parengage()
     inoremap <buffer> <expr> ) parengage#close_round()
     inoremap <buffer> <expr> [ parengage#open_square()
     inoremap <buffer> <expr> ] parengage#close_square()
+    inoremap <buffer> <expr>  parengage#delete_character()
 endfunction
 
 " Commands section
@@ -22,6 +30,18 @@ function! parengage#close_round()
         return "\<Right>"
     else
         return ")"
+    endif
+endfunction
+
+function! parengage#delete_character()
+    let previous_char = matchstr(getline('.'), '\%' . (col('.')-1) . 'c.')
+    let current_char = matchstr(getline('.'), '\%' . col('.') . 'c.')
+    if current_char == ")" && previous_char == "("
+        return "\<Left>\<C-o>2s"
+    elseif previous_char == ")"
+        return "\<Left>"
+    else
+        return "\<BS>"
     endif
 endfunction
 
@@ -45,3 +65,5 @@ function! parengage#close_square()
         return "]"
     endif
 endfunction
+
+au FileType *clojure* call Parengage()

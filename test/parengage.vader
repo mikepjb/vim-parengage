@@ -1,0 +1,7 @@
+# Parengage modules test file
+
+Include: include/setup.vader
+
+~ Features
+Include (Character Deletion): feature/delete.vader
+Include (First testing page): feature/first.vader
