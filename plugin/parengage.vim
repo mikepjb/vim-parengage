@@ -16,6 +16,7 @@ function! Parengage()
     inoremap <buffer> <expr> ] parengage#close_square()
     inoremap <buffer> <expr> { parengage#open_curly()
     inoremap <buffer> <expr> } parengage#close_curly()
+    inoremap <buffer> <expr> " parengage#open_double_quote()
     inoremap <buffer> <expr>  parengage#delete_character()
 endfunction
 
@@ -83,4 +84,10 @@ function! parengage#close_curly()
         return "}"
     endif
 endfunction
+
+function! parengage#open_double_quote()
+    return "\"\"\<Left>"
+endfunction
+
+
 au FileType *clojure* call Parengage()

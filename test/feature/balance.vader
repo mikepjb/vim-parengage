@@ -20,8 +20,17 @@ Expect(A pair of parens):
 Do(Insert a curly bracket):
   i{
 
+----
+# }
+
 Expect(A pair of parens):
   {}
+
+Do(Insert a double quote):
+  i"
+
+Expect(A pair of parens):
+  ""
 
 " Close a paren
 " C-j/i<CR> paredit-newline - instead use <C-f><CR>
