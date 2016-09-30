@@ -14,6 +14,8 @@ function! Parengage()
     inoremap <buffer> <expr> ) parengage#close_round()
     inoremap <buffer> <expr> [ parengage#open_square()
     inoremap <buffer> <expr> ] parengage#close_square()
+    inoremap <buffer> <expr> { parengage#open_curly()
+    inoremap <buffer> <expr> } parengage#close_curly()
     inoremap <buffer> <expr>  parengage#delete_character()
 endfunction
 
@@ -66,4 +68,19 @@ function! parengage#close_square()
     endif
 endfunction
 
+" curly section
+
+function! parengage#open_curly()
+    return "{}\<Left>"
+endfunction
+
+
+function! parengage#close_curly()
+    let current_char = matchstr(getline('.'), '\%' . col('.') . 'c.')
+    if current_char == "}"
+        return "\<Right>"
+    else
+        return "}"
+    endif
+endfunction
 au FileType *clojure* call Parengage()

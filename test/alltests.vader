@@ -4,4 +4,4 @@ Include: include/setup.vader
 
 ~ Features
 Include (Character Deletion): feature/delete.vader
-Include (First testing page): feature/first.vader
+Include (Balancing character pairs): feature/balance.vader

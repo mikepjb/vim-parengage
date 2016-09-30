@@ -16,6 +16,13 @@ Do(Insert a square bracket):
 
 Expect(A pair of parens):
   []
+
+Do(Insert a curly bracket):
+  i{
+
+Expect(A pair of parens):
+  {}
+
 " Close a paren
 " C-j/i<CR> paredit-newline - instead use <C-f><CR>
 " C-d/x paredit-forward-delete (L336)
