@@ -4,3 +4,8 @@
 
 Parengage helps you to write sexps more easily by assisting with things
 like balancing parenthesis.
+
+splicing - (paredit M-s equivalent)
+
+slurping
+and barfing

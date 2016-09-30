@@ -5,3 +5,4 @@ Include: include/setup.vader
 ~ Features
 Include (Character Deletion): feature/delete.vader
 Include (Balancing character pairs): feature/balance.vader
+Include (S-exp Slurping and Barfing): feature/slurpbarf.vader

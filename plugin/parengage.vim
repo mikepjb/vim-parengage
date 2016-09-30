@@ -20,7 +20,7 @@ function! Parengage()
     inoremap <buffer> <expr>  parengage#delete_character()
 endfunction
 
-" Commands section
+" Balancing section
 
 function! parengage#open_round()
     return "()\<Left>"
@@ -89,5 +89,28 @@ function! parengage#open_double_quote()
     return "\"\"\<Left>"
 endfunction
 
+" Commands section
+
+" TODO move to/create helper section
+function! s:letter_under_cursor()
+    return matchstr(getline('.'), '\%' . col('.') . 'c.')
+endfunction
+
+function! parengage#slurp_right()
+    if s:letter_under_cursor() != ')'
+        normal f)
+    endif
+    normal "yx
+    " you will likely need a conditional to check that a paren is not already
+    " side by side to another before searching. )) will stay as ))
+    normal / \|)
+    normal "yP
+endfunction
+
+" Keybindings section
+
+set <M-k>=k
+imap <M-k> <C-o>:call parengage#slurp_right()<CR>
+map <M-k> :call parengage#slurp_right()<CR>
 
 au FileType *clojure* call Parengage()

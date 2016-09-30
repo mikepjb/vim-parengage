@@ -1,0 +1,12 @@
+Given(A basic one line s-exp):
+  (def text-example (str/join ", " '(1 2) 3))
+
+Do(Slurp when cursor is on number 1 (using M-k)):
+  /1 2k
+
+Expect(3 is now included in the list):
+  (def text-example (str/join ", " '(1 2 3)))
+
+# TODO do the same thing with square brackets
+# Given(A basic one line s-exp):
+#   (def text-example (str/join ", " [1 2] 3))
