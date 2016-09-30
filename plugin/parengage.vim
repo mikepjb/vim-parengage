@@ -1,6 +1,8 @@
 " Parengage
 
 " TODO uncomment when finished...
+" TODO at some point you should be generalising commands
+" like slurp right/left
 " if &cp || exists( 'g:parengage_loaded' )
 "     finish
 " endif
@@ -105,6 +107,10 @@ function! parengage#slurp_right()
     " side by side to another before searching. )) will stay as ))
     normal / \|)
     normal "yP
+endfunction
+
+function! parengage#barf_right()
+
 endfunction
 
 " Keybindings section

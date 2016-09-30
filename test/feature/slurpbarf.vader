@@ -7,6 +7,15 @@ Do(Slurp when cursor is on number 1 (using M-k)):
 Expect(3 is now included in the list):
   (def text-example (str/join ", " '(1 2 3)))
 
+Given(A basic one line s-exp):
+  (def text-example (str/join ", " '(1 2) 3))
+
+Do(Barf when cursor is on number 1 (using M-l)):
+  /1 2l
+
+Expect(2 has been expelled from it's original list):
+  (def text-example (str/join ", " '(1) 2 3))
+
 # TODO do the same thing with square brackets
 # Given(A basic one line s-exp):
 #   (def text-example (str/join ", " [1 2] 3))

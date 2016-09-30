@@ -9,3 +9,5 @@ splicing - (paredit M-s equivalent)
 
 slurping
 and barfing
+
+cut out current sexp with d% (vanilla vim...)
