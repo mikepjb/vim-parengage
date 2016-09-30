@@ -11,3 +11,6 @@ slurping
 and barfing
 
 cut out current sexp with d% (vanilla vim...)
+
+kicking - throwing the closest paren to the end of next whole sexp
+and zipping - brings the furthest paren from the end of the next whole sexp
