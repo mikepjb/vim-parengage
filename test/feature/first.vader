@@ -1,7 +1,6 @@
 " First test file for parengage, let's start by writing scenarios of when we
 " do and don't want to insert parens/{}/[]/"" etc...
-
-Include: include/setup.vader
+" TODO vader.vim include keyword is causing issues, for now run parengage.vim first
 
 Do(Insert a paren):
   i(
@@ -12,6 +11,11 @@ Do(Insert a paren):
 Expect(A pair of parens):
   ()
 
+Do(Insert a square bracket):
+  i[
+
+Expect(A pair of parens):
+  []
 " Close a paren
 " C-j/i<CR> paredit-newline - instead use <C-f><CR>
 " C-d/x paredit-forward-delete (L336)
