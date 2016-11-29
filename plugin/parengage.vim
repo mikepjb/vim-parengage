@@ -20,6 +20,17 @@ function! Parengage()
     inoremap <buffer> <expr> } parengage#close_curly()
     inoremap <buffer> <expr> " parengage#open_double_quote()
     inoremap <buffer> <expr>  parengage#delete_character()
+
+    if has('nvim')
+        tnoremap <buffer> <expr> ( parengage#open_round()
+        tnoremap <buffer> <expr> ) parengage#close_round()
+        tnoremap <buffer> <expr> [ parengage#open_square()
+        tnoremap <buffer> <expr> ] parengage#close_square()
+        tnoremap <buffer> <expr> { parengage#open_curly()
+        tnoremap <buffer> <expr> } parengage#close_curly()
+        tnoremap <buffer> <expr> " parengage#open_double_quote()
+        tnoremap <buffer> <expr> ^? parengage#delete_character()
+    endif
 endfunction
 
 " Balancing section
