@@ -115,7 +115,11 @@ endfunction
 
 " Keybindings section
 
-set <M-k>=k
+
+if !has('nvim')
+    set <M-k>=k
+endif
+
 imap <M-k> <C-o>:call parengage#slurp_right()<CR>
 map <M-k> :call parengage#slurp_right()<CR>
 
