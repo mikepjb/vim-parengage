@@ -11,7 +11,17 @@
 
 " Setup function
 
+" Links keybindings to parengage function
 function! Parengage()
+    if !has('nvim')
+        set <M-k>=k
+        set <M-l>=l
+    endif
+
+    inoremap <M-k> <C-o>:call parengage#slurp_right()<CR>
+    map <M-k> :call parengage#slurp_right()<CR>
+    inoremap <M-l> <C-o>:call parengage#barf_right()<CR>
+    map <M-l> :call parengage#barf_right()<CR>
     inoremap <buffer> <expr> ( parengage#open_round()
     inoremap <buffer> <expr> ) parengage#close_round()
     inoremap <buffer> <expr> [ parengage#open_square()
@@ -121,17 +131,10 @@ function! parengage#slurp_right()
 endfunction
 
 function! parengage#barf_right()
-
+    if s:letter_under_cursor() != ')'
+        normal f)
+    endif
+    normal Bh"ydt)"yp
 endfunction
-
-" Keybindings section
-
-
-if !has('nvim')
-    set <M-k>=k
-endif
-
-imap <M-k> <C-o>:call parengage#slurp_right()<CR>
-map <M-k> :call parengage#slurp_right()<CR>
 
 au FileType *clojure* call Parengage()
