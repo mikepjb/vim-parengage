@@ -16,12 +16,15 @@ function! Parengage()
     if !has('nvim')
         set <M-k>=k
         set <M-l>=l
+        set <M-o>=o
     endif
 
     inoremap <M-k> <C-o>:call parengage#slurp_right()<CR>
     map <M-k> :call parengage#slurp_right()<CR>
     inoremap <M-l> <C-o>:call parengage#barf_right()<CR>
     map <M-l> :call parengage#barf_right()<CR>
+    inoremap <M-o> <C-o>:call parengage#kick()<CR>
+    map <M-o> :call parengage#kick()<CR>
     inoremap <buffer> <expr> ( parengage#open_round()
     inoremap <buffer> <expr> ) parengage#close_round()
     inoremap <buffer> <expr> [ parengage#open_square()
@@ -98,7 +101,6 @@ function! parengage#open_curly()
     return "{}\<Left>"
 endfunction
 
-
 function! parengage#close_curly()
     let current_char = matchstr(getline('.'), '\%' . col('.') . 'c.')
     if current_char == "}"
@@ -117,6 +119,17 @@ endfunction
 " TODO move to/create helper section
 function! s:letter_under_cursor()
     return matchstr(getline('.'), '\%' . col('.') . 'c.')
+endfunction
+
+function! parengage#kick()
+    if s:letter_under_cursor() != ')'
+        normal f)
+    endif
+    normal "yx
+    if s:letter_under_cursor() != '('
+        normal f(
+    endif
+    normal %"yp
 endfunction
 
 function! parengage#slurp_right()

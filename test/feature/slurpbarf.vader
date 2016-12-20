@@ -19,3 +19,13 @@ Expect(2 has been expelled from it's original list):
 # TODO do the same thing with square brackets
 # Given(A basic one line s-exp):
 #   (def text-example (str/join ", " [1 2] 3))
+
+Given(A basic one line s-exp):
+  (def text-example (str/join ", " '(1 2 3)))
+
+Do(Include time function and invoke kick (using M-o)):
+  i(time o
+
+Expect(newly added time function is wrapped around original sexp):
+  (time (def text-example (str/join ", " '(1 2 3))))
+
