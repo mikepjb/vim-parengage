@@ -65,7 +65,10 @@ endfunction
 function! parengage#delete_character()
     let previous_char = matchstr(getline('.'), '\%' . (col('.')-1) . 'c.')
     let current_char = matchstr(getline('.'), '\%' . col('.') . 'c.')
-    if current_char == ")" && previous_char == "("
+    if (current_char == ")" && previous_char == "(") ||
+                \ (current_char == "]" && previous_char == "[") ||
+                \ (current_char == "}" && previous_char == "{") ||
+                \ (current_char == "\"" && previous_char == "\"")
         return "\<Left>\<C-o>2s"
     elseif previous_char == ")"
         return "\<Left>"

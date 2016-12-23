@@ -40,3 +40,41 @@ Expect(A pair of parens):
 " (emacs)C-M-f paredit-forward, move forward one sexp - what would be a good vim keybinding? (L379)
 
 " paredit-forward-slurp-sexp (emacs)C-) - my vim traditional is C-k
+
+" Removing pairs
+
+Given(A pair of curly parens):
+  ()
+
+Do(Delete the opening paren):
+  a\<BS>
+
+Expect(The pair of parens have been removed):
+  
+
+Given(A pair of square parens):
+  []
+
+Do(Delete the opening paren):
+  a\<BS>
+
+Expect(The pair of parens have been removed):
+  
+
+Given(A pair of squiggly parens):
+  {}
+
+Do(Delete the opening paren):
+  a\<BS>
+
+Expect(The pair of parens have been removed):
+  
+
+Given(A pair of quotation marks):
+  ""
+
+Do(Delete the opening paren):
+  a\<BS>
+
+Expect(The pair of parens have been removed):
+  
