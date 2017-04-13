@@ -23,8 +23,8 @@ function! Parengage()
     map <M-k> :call parengage#slurp_right()<CR>
     inoremap <M-l> <C-o>:call parengage#barf_right()<CR>
     map <M-l> :call parengage#barf_right()<CR>
-    inoremap <M-o> <C-o>:call parengage#kick()<CR>
-    map <M-o> :call parengage#kick()<CR>
+    " inoremap <M-o> <C-o>:call parengage#kick()<CR>
+    " map <M-o> :call parengage#kick()<CR>
     inoremap <buffer> <expr> ( parengage#open_round()
     inoremap <buffer> <expr> ) parengage#close_round()
     inoremap <buffer> <expr> [ parengage#open_square()
